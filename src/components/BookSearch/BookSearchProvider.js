@@ -8,7 +8,7 @@ export const BookSearchProvider = (props) => {
     const [ searchTerms, setSearchTerms ] = useState("")
 
     const getBooks = () => {
-        return fetch(`https://www.googleapis.com/books/v1/volumes?q=search+terms:keyes&key=${GoogleBooksApi}`)
+        return fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerms}&key=${GoogleBooksApi}`)
         .then(res => res.json())
         .then(books => {
             setBooks(books.items)

@@ -7,7 +7,7 @@ export const ApplicationViews = () => {
   return (
       <>
       <BookSearchProvider>
-              <Route exact path="/searchBooks">
+              <Route exact path="/">
                   <BookSearchForm />
               </Route>
       </BookSearchProvider>
