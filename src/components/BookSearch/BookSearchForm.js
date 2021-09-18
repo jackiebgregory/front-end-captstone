@@ -2,12 +2,21 @@ import React, { useContext } from "react"
 import { BookContext } from "./BookSearchProvider"
 
 export const BookSearchForm = () => {
-  const { books, getBooks, setSearchTerms, searchTerms } = useContext(BookContext)
+  const { books, getBooks, setSearchTerms, searchTerms, saveBook } = useContext(BookContext)
   const searchBooks = (event) => {
     event.preventDefault()
     // setSearchTerms(event.target.value)
     getBooks()
   }
+
+const handleSaveBook = (event) => {
+  console.log(event.target.value)
+  event.preventDefault()
+  const book = {
+    googleBookId: event.target.id
+  }
+  saveBook(book)
+}
 
   return (
     <>
@@ -40,7 +49,7 @@ export const BookSearchForm = () => {
           {book.volumeInfo.authors}
           </div>
           <div>
-            <button > 
+            <button id={book.id} onClick={handleSaveBook}> 
             Save in My Books
           </button>
           </div>
@@ -53,15 +62,3 @@ export const BookSearchForm = () => {
 </>
 
 )}
-
-
-
-
-
-{/* <button
-                disabled={isLoading}
-                onClick={event => {
-                    event.preventDefault()
-                    saveLead()
-                }}>
-                {leadId ? <>Save Lead</> : <>Add Lead</>}</button> */}

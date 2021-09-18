@@ -4,7 +4,7 @@ import { GoogleBooksApi } from "../../ApiKeys"
 export const BookContext = createContext()
 
 export const BookSearchProvider = (props) => {
-    const [books, setBooks] = useState([])
+    const [books, setBooks ] = useState([])
     const [ searchTerms, setSearchTerms ] = useState("")
 
     const getBooks = () => {
@@ -13,13 +13,10 @@ export const BookSearchProvider = (props) => {
         .then(books => {
             setBooks(books.items)
         })
-        .catch(error => {
-            console.log(error)
-        })
     }
 
-    const addBook = bookObj => {
-        return fetch("http://localhost:8088/$`{VolumeId}`", {
+    const saveBook = bookObj => {
+        return fetch("http://localhost:8088/MyBooks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -28,10 +25,10 @@ export const BookSearchProvider = (props) => {
         })
         .then(getBooks)
     }
-      
+
     return (
         <BookContext.Provider value={{
-            books, getBooks, addBook, searchTerms, setSearchTerms
+            books, getBooks, saveBook, searchTerms, setSearchTerms
         }}>
             {props.children}
         </BookContext.Provider>
