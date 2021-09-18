@@ -2,35 +2,48 @@ import React, { useContext } from "react"
 import { BookContext } from "./BookSearchProvider"
 
 export const BookSearchForm = () => {
-  const { books, getBooks, setSearchTerms } = useContext(BookContext)
+  const { books, getBooks, setSearchTerms, searchTerms } = useContext(BookContext)
   const searchBooks = (event) => {
     event.preventDefault()
-    setSearchTerms(event.target.value)
+    // setSearchTerms(event.target.value)
     getBooks()
   }
 
   return (
     <>
-    <form onSubmit={searchBooks}>
+    <form>
       <label>
         Search for a book:
-        <input type="text" name="search" 
-        placeholder="Search for a book... " />
+        <input 
+          type="text" 
+          name="search" 
+          value={searchTerms} 
+          onChange={event => setSearchTerms(event.target.value)}
+          placeholder="For example... " 
+        />
       </label>
-      <input type="submit" value="Submit" 
-      />
+      <button onClick={searchBooks}>Search</button>
     </form>
 
   <ul>
     {books.map(book => {
         return (
           <div>
-            <li>
+            
+        <div class="search_return">
+          <img class= "returned_item" src={book.volumeInfo.imageLinks.thumbnail}/>
+          </div>
+          <div class="returned_item">
           {book.volumeInfo.title}
-        </li>
-        <li>
-          <img src={book.volumeInfo.imageLinks.thumbnail}/>
-        </li>
+          </div>
+          <div class="returned_item">
+          {book.volumeInfo.authors}
+          </div>
+          <div>
+            <button > 
+            Save in My Books
+          </button>
+          </div>
         </div>
         )
       })
