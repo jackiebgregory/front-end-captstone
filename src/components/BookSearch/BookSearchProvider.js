@@ -26,9 +26,17 @@ export const BookSearchProvider = (props) => {
         .then(getBooks)
     }
 
+    const getBookById = () => {
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=LNN5LPwArC8C&key=${GoogleBooksApi}`)
+        .then(res => res.json())
+        .then(book => {
+        return book.items[0]
+        })
+    }
+
     return (
         <BookContext.Provider value={{
-            books, getBooks, saveBook, searchTerms, setSearchTerms
+            books, getBooks, saveBook, searchTerms, setSearchTerms, getBookById
         }}>
             {props.children}
         </BookContext.Provider>
