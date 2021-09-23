@@ -1,11 +1,13 @@
 import React, { useContext } from "react"
 import { BookContext } from "./BookSearchProvider"
+import "./BookSearch.css"
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 export const BookSearchForm = () => {
   const { books, getBooks, setSearchTerms, searchTerms, saveBook } = useContext(BookContext)
   const searchBooks = (event) => {
     event.preventDefault()
-    // setSearchTerms(event.target.value)
     getBooks()
   }
 
@@ -31,21 +33,21 @@ const handleSaveBook = (event) => {
           placeholder="For example... " 
         />
       </label>
-      <button onClick={searchBooks}>Search</button>
+      <button className="search_button" onClick={searchBooks}>Search</button>
     </form>
 
-  <ul>
     {books.map(book => {
         return (
+          <> 
+        {/* <div>
           <div>
-            
-        <div class="search_return">
-          <img class= "returned_item" src={book.volumeInfo.imageLinks.thumbnail}/>
+          <img className= "returned_item_image" 
+          src={book.volumeInfo.imageLinks.thumbnail}/>
           </div>
-          <div class="returned_item">
+          <div className="returned_item_title">
           {book.volumeInfo.title}
           </div>
-          <div class="returned_item">
+          <div className="returned_item_author">
           {book.volumeInfo.authors}
           </div>
           <div>
@@ -53,12 +55,25 @@ const handleSaveBook = (event) => {
             Save in My Books
           </button>
           </div>
-        </div>
+        </div> */}
+
+        
+     {/* bootstrap below */}
+     
+  <Card style={{ width: '18rem' }}>
+  <Card.Img variant="top" src="{book.volumeInfo.imageLinks.thumbnail}/100px180" />
+  <Card.Body>
+    <Card.Title>{book.volumeInfo.title}</Card.Title>
+    <Card.Text>
+    {book.volumeInfo.authors}
+    </Card.Text>
+    <Button variant="primary" id={book.id} onClick={handleSaveBook}>
+      Save in My Books</Button>
+  </Card.Body>
+</Card>
+        </>
         )
       })
     }
-  </ul>
-
 </>
-
 )}
