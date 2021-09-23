@@ -16,16 +16,6 @@ export const MyBooksList = () => {
 
   return (
     <>
-    {/* <ul>
-    {books.map(book => {
-        return (
-          <div>
-        {book.googleBookId}
-        </div>
-        )
-      })
-    }
-  </ul> */}
   <div className="books">
       {
         books.map(book => {
