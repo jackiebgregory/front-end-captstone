@@ -10,7 +10,9 @@ export const BookSearchForm = () => {
     event.preventDefault()
     getBooks()
   }
-
+  // 
+  
+  // 
 const handleSaveBook = (event) => {
   console.log(event.target.value)
   event.preventDefault()
@@ -61,7 +63,7 @@ const handleSaveBook = (event) => {
      {/* bootstrap below */}
      
   <Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="{book.volumeInfo.imageLinks.thumbnail}/100px180" />
+  <Card.Img variant="top" src={`${book.volumeInfo.imageLinks.thumbnail}/100px180`} />
   <Card.Body>
     <Card.Title>{book.volumeInfo.title}</Card.Title>
     <Card.Text>
