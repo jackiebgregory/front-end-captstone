@@ -62,7 +62,7 @@ const handleSaveBook = (event) => {
         
      {/* bootstrap below */}
      
-  <Card style={{ width: '18rem' }}>
+  <Card style={{ width: '15rem' }}>
   <Card.Img variant="top" src={`${book.volumeInfo.imageLinks.thumbnail}/100px180`} />
   <Card.Body>
     <Card.Title>{book.volumeInfo.title}</Card.Title>
