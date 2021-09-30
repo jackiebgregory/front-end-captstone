@@ -40,7 +40,7 @@ export const BookDetail = (props) => {
 
 
 {/* bootstrap below */}
-     <Card style={{ width: '18rem' }}>
+     <Card style={{ width: '15rem' }}>
   <Card.Img variant="top" src={`${image}`} />
   <Card.Body>
     <Card.Title>{book.title}</Card.Title>
