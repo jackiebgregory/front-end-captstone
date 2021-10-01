@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { BookContext } from "../BookSearch/BookSearchProvider"
 import { GoogleBooksApi } from "../../ApiKeys"
-// import "./MyBooks.css"
-import Card from 'react-bootstrap/Card'
-import CardGroup from 'react-bootstrap/CardGroup'
+import "./MyBooks.css"
 
 export const BookDetail = (props) => {
     const { getBookById } = useContext(BookContext)
@@ -32,23 +30,13 @@ export const BookDetail = (props) => {
 
     return (
     <>
-       {/* <div className="book"> */}
-       {/* <img className= "book__img" src={book.imageLinks.thumbnail}/>
-       <div className="book__title">{book.title}</div>
-       <div className="book__author">{book.authors}</div> 
-     </div> */}
-
-
-{/* bootstrap below */}
-     <Card style={{ width: '15rem' }}>
-  <Card.Img variant="top" src={`${image}`} />
-  <Card.Body>
-    <Card.Title>{book.title}</Card.Title>
-    <Card.Text>
-    {book.authors}
-    </Card.Text>
-  </Card.Body>
-</Card>
+      <div className="my_books_container">
+        <div className="my_books">
+          <img className= "book__img" src={book.imageLinks.thumbnail}/>
+          <div className="book__title">{book.title}</div>
+          <div className="book__author">{book.authors}</div> 
+        </div>
+     </div>
     </>
   )
 }

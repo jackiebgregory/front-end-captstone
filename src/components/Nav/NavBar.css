@@ -18,12 +18,12 @@
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #549077;
   color: black;
 }
 
 /* Add an active class to highlight the current page */
 .topnav a.active {
-  background-color: #04AA6D;
+  background-color: #549077;
   color: white;
 }
