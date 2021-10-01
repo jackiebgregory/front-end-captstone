@@ -1,10 +1,4 @@
-.book {
-  
-  background-color: #7ec5e8;
-  
-}
-
-.my_books_container {
+.books {
   display: flex; 
   flex-direction: row;
   flex-wrap: wrap;

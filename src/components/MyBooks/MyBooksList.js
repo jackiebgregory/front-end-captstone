@@ -20,7 +20,6 @@ export const MyBooksList = () => {
       {
         books.map(book => {
           return <BookDetail key={book.id} book={book.googleBookId} />
-          
         })
       }
       </div>
