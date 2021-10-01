@@ -1,8 +1,7 @@
 import React, { useContext } from "react"
 import { BookContext } from "./BookSearchProvider"
 import "./BookSearch.css"
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import { useHistory } from "react-router"
 
 export const BookSearchForm = () => {
   const { books, getBooks, setSearchTerms, searchTerms, saveBook } = useContext(BookContext)
@@ -10,9 +9,7 @@ export const BookSearchForm = () => {
     event.preventDefault()
     getBooks()
   }
-  // 
-  
-  // 
+const history = useHistory()  
 const handleSaveBook = (event) => {
   console.log(event.target.value)
   event.preventDefault()
@@ -20,6 +17,7 @@ const handleSaveBook = (event) => {
     googleBookId: event.target.id
   }
   saveBook(book)
+  history.push("/myBooks")
 }
 
   return (
@@ -37,45 +35,33 @@ const handleSaveBook = (event) => {
       </label>
       <button className="search_button" onClick={searchBooks}>Search</button>
     </form>
-
+    
+    <div className="book_search_results">
     {books.map(book => {
         return (
           <> 
-        {/* <div>
-          <div>
-          <img className= "returned_item_image" 
-          src={book.volumeInfo.imageLinks.thumbnail}/>
-          </div>
-          <div className="returned_item_title">
-          {book.volumeInfo.title}
-          </div>
-          <div className="returned_item_author">
-          {book.volumeInfo.authors}
-          </div>
-          <div>
+          <div className="returned_books">
+            <div>
+            <img className= "returned_item_image" 
+            src={book.volumeInfo.imageLinks.thumbnail}/>
+            </div>
+            <div className="returned_item_title">
+            {book.volumeInfo.title}
+            </div>
+            <div className="returned_item_author">
+            {book.volumeInfo.authors}
+            </div>
+            <div>
             <button id={book.id} onClick={handleSaveBook}> 
             Save in My Books
-          </button>
+            </button>
+            </div>
           </div>
-        </div> */}
-
         
-     {/* bootstrap below */}
-     
-  <Card style={{ width: '15rem' }}>
-  <Card.Img variant="top" src={`${book.volumeInfo.imageLinks.thumbnail}/100px180`} />
-  <Card.Body>
-    <Card.Title>{book.volumeInfo.title}</Card.Title>
-    <Card.Text>
-    {book.volumeInfo.authors}
-    </Card.Text>
-    <Button variant="primary" id={book.id} onClick={handleSaveBook}>
-      Save in My Books</Button>
-  </Card.Body>
-</Card>
         </>
         )
       })
     }
+    </div>
 </>
 )}
