@@ -23,6 +23,7 @@ const handleSaveBook = (event) => {
   return (
     <>
     <form>
+      <div className="search_form">
       <label>
         Search for a book:
         <input 
@@ -34,6 +35,7 @@ const handleSaveBook = (event) => {
         />
       </label>
       <button className="search_button" onClick={searchBooks}>Search</button>
+      </div>
     </form>
     
     <div className="book_search_results">

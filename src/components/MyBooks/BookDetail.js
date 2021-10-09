@@ -35,8 +35,20 @@ export const BookDetail = (props) => {
           <img className= "book__img" src={book.imageLinks.thumbnail}/>
           <div className="book__title">{book.title}</div>
           <div className="book__author">{book.authors}</div> 
+          
+          <form>
+            <label for="name">Grade Level:</label>
+            <input type="text"></input>
+            <label>Curriculum Standards:</label>
+            <input type="text"></input>
+            <button>Save</button>
+          </form>
+          
         </div>
-     </div>
+      
+      </div>
+    
+     
     </>
   )
 }
